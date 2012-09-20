@@ -7,6 +7,7 @@
         <script type="text/javascript" charset="utf-8">
 
             function init() {
+            	// To prevent the screen scrolling
             	document.body.addEventListener('touchmove', function(e) {
 			                    e.preventDefault();
                 }, false);
@@ -16,7 +17,7 @@
             var width = document.body.clientWidth;
             var height = document.body.clientHeight;
             canvas.width = width-2;
-            canvas.height = height - 120;
+            canvas.height = height - 220;
             var x = width / 2;
             var y = height / 2;
             var ctx = null;
