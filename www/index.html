@@ -7,10 +7,13 @@
         <script type="text/javascript" charset="utf-8">
 
             function init() {
+            	document.body.addEventListener('touchmove', function(e) {
+			                    e.preventDefault();
+                }, false);
                 document.addEventListener("deviceready", watchAccel, true);
             }
-            var width = document.width;
-            var height = document.height;
+            var width = document.width-2;
+            var height = document.height-20;
             var x = width / 2;
             var y = height / 2;
             var ctx = null;
