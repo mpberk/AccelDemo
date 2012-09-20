@@ -12,18 +12,16 @@
                 }, false);
                 document.addEventListener("deviceready", watchAccel, true);
             }
-            //var width = document.width-2;
-            var width = 50-2;
-            //var height = document.height-20;
-            var height = 100-20;
+            var canvas = document.getElementById("canvas");
+            var width = document.body.clientWidth;
+            var height = document.body.clientHeight;
+            canvas.width = width-2;
+            canvas.height = height - 120;
             var x = width / 2;
             var y = height / 2;
             var ctx = null;
 
             var watchAccel = function () {
-                var canvas = document.getElementById("canvas");
-                canvas.width = document.body.clientWidth;
-                canvas.height = document.body.clientHeight - 100;
                 ctx = canvas.getContext("2d");
 
                 var succ = function (a) {
@@ -81,7 +79,7 @@
       <dt>Z:</dt><dd id="z">&nbsp;</dd>
     </dl>
   <p>This is a demonstration of using PhoneGap's Acceleromter with the HTML 5 Canvas</p>
-	<canvas id="canvas" width="280" height="480">
+	<canvas id="canvas">
 	</canvas>
 	</div>
     </div>
