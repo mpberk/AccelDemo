@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>PhoneGap's Acceleromter with the HTML 5 Canvas</title>
+    <link rel="stylesheet" href="assets/master.css" type="text/css" media="screen" title="no title"/>
+    <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>  
+        <script type="text/javascript" charset="utf-8">
+      
+            function init() {
+                document.addEventListener("deviceready", watchAccel, true);
+            }
+            var width = 280;
+            var height = 480;      
+            var x = width / 2;
+            var y = height / 2;
+            var ctx = null;
+
+            var watchAccel = function () {
+                var canvas = document.getElementById("canvas");
+                canvas.width = document.body.clientWidth;
+                canvas.height = document.body.clientHeight - 100;
+                ctx = canvas.getContext("2d");
+
+                var succ = function (a) {
+                    updateValues(a);
+                    updateDraw(a);
+                };
+                var fail = function () { };
+                var opt = {};
+                opt.frequency = 100;
+                timer = navigator.accelerometer.watchAcceleration(succ, fail, opt);
+            }
+
+            var updateDraw = function (accel) {
+
+                ctx.fillStyle = "#ffffff";
+                ctx.clearRect(x - 30, y - 30, 60, 60);
+                ctx.beginPath();
+                ctx.arc(x, y, 10, 0, Math.PI * 2, true);
+                ctx.closePath();
+                ctx.fill();
+
+                var dx = roundNumber(accel.x, 1)
+                var dy = roundNumber(accel.y, 1)
+                if (x - dx <= width  && x - dx > 0)
+                    x -= dx ;
+               // if (x <= 10)
+               //     x = 10;
+                if (y + dy <= height   && y + dy > 0)
+                    y += dy;
+               // if (y <= -10)
+               //     y = 10;
+            }
+
+            var updateValues = function (a) {
+                document.getElementById('x').innerHTML = roundNumber(a.x, 3);
+                document.getElementById('y').innerHTML = roundNumber(a.y, 3);
+                document.getElementById('z').innerHTML = roundNumber(a.z, 3);
+            }
+
+            var roundNumber = function (num, dec) {
+                var result = Math.round(num * Math.pow(10, dec)) / Math.pow(10, dec);
+                return result;
+            }
+ </script>
+  </head>
+  <body onload="init();" id="stage" class="theme">
+  <div id="container">
+	<div id="header">
+    Motion Canvas
+  </div>
+	<div id="content">
+	  <dl id="accel-data">
+      <dt>X:</dt><dd id="x">&nbsp;</dd>
+      <dt>Y:</dt><dd id="y">&nbsp;</dd>
+      <dt>Z:</dt><dd id="z">&nbsp;</dd>
+    </dl>
+  <p>This is a demonstration of using PhoneGap's Acceleromter with the HTML 5 Canvas</p>
+	<canvas id="canvas" width="280" height="480">
+	</canvas>
+	</div>
+    </div>
+  </body>
+</html>
