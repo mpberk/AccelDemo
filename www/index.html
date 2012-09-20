@@ -1,16 +1,16 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <title>PhoneGap's Acceleromter with the HTML 5 Canvas</title>
     <link rel="stylesheet" href="assets/master.css" type="text/css" media="screen" title="no title"/>
-    <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>  
+    <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
         <script type="text/javascript" charset="utf-8">
-      
+
             function init() {
                 document.addEventListener("deviceready", watchAccel, true);
             }
-            var width = 280;
-            var height = 480;      
+            var width = document.width;
+            var height = document.height;
             var x = width / 2;
             var y = height / 2;
             var ctx = null;
