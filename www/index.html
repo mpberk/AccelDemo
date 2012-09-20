@@ -14,10 +14,10 @@
                 document.addEventListener("deviceready", watchAccel, true);
             }
             var canvas = document.getElementById("canvas");
-            var width = document.body.clientWidth;
-            var height = document.body.clientHeight;
+            var width = document.width;
+            var height = document.height;
             canvas.width = width-2;
-            canvas.height = height - 220;
+            canvas.height = height - 150;
             var x = width / 2;
             var y = height / 2;
             var ctx = null;
