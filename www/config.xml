@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.intel.acceldemo"
+        versionCode="10" 
+        version   = "1.0.0">
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>AccelDemo</name>
+
+    <description>
+        Simple app that demos the accelerometer
+    </description>
+
+    <author href="http://intel.com" email="berk.dev@gmail.com">
+        Matt Berk
+    </author>
+    
+    <preference name="orientation" value="portrait" />
+
+</widget>
