@@ -13,26 +13,29 @@
                 }, false);
                 document.addEventListener("deviceready", watchAccel, true);
             }
-            var canvas = document.getElementById("canvas");
-            var width = document.width;
-            var height = document.height;
-            canvas.width = width-2;
-            canvas.height = height;
-            var x = width / 2;
-            var y = height / 2;
+
+						var width = document.width;
+						var height = document.height;
+						var wOff = 50;
+						var hOff = 100;
+            var x = (width - wOff) / 2;
+            var y = (height - hOff) / 2;
             var ctx = null;
 
             var watchAccel = function () {
-                ctx = canvas.getContext("2d");
+							var canvas = document.getElementById("canvas");
+							canvas.width = width - wOff;
+							canvas.height = height - hOff;
+							ctx = canvas.getContext("2d");
 
-                var succ = function (a) {
-                    updateValues(a);
-                    updateDraw(a);
-                };
-                var fail = function () { };
-                var opt = {};
-                opt.frequency = 100;
-                timer = navigator.accelerometer.watchAcceleration(succ, fail, opt);
+							var succ = function (a) {
+								updateValues(a);
+								updateDraw(a);
+							};
+							var fail = function () { };
+							var opt = {};
+							opt.frequency = 100;
+							timer = navigator.accelerometer.watchAcceleration(succ, fail, opt);
             }
 
             var updateDraw = function (accel) {
